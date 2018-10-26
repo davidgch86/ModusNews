@@ -1,0 +1,104 @@
+﻿@{
+    ViewBag.Title = "News";
+}
+<script src="~/Scripts/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#myInput").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+            $("#myTable tr").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+
+    $(document).on("click", ".open-NewsDialog", function () {
+        var url = $(this).data('id');
+        $(".modal-body #urlst")[0].data = url;
+
+    });
+</script>
+<br />
+<h2>Modus News</h2>
+<hr />
+<br />
+@using (Html.BeginForm())
+{
+    <div style="position:relative">
+
+
+        @if (ViewBag.SOURCE.Count>0)
+        {
+            <select name="providerURL"  style="min-width:90%">
+                <option value="">Select all</option>
+                @foreach (var item in ViewBag.SOURCE)
+                {
+                <option value="@item">@item</option>
+
+                }
+            </select>
+        }
+        else
+        {
+            <input type="URL" name="providerURL" placeholder="Enter URL Here..." value="@ViewBag.URL" style="min-width:90%" />
+        }
+
+
+        <input type="submit" class="btn btn-success" value=" >>" />
+    </div>
+}
+<br><br>
+<input id="myInput" type="text" placeholder="Search..">
+<br><br>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th style="width:15%">Publish Date</th>
+            <th style="width:10%">Actions</th>
+        </tr>
+    </thead>
+    <tbody id="myTable">
+
+        @if (Model != null)
+        {
+            foreach (var item in Model.NewsFeedList)
+            {
+                <tr>
+                    <td>@item.Title</td>
+                    <td title="@item.Description">@(@item.Description.Length>=150? @item.Description.Substring(0, 150):@item.Description)</td>
+                    <td>@item.Date</td>
+                    <td>
+                        <a href="@item.URL" target="_blank">Go</a>
+                        <button type="button" class=" btn-link open-NewsDialog" data-id="@item.URL" data-toggle="modal" data-target="#ModalNew">View</button>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+<!-- Modal to show the news -->
+<div class="modal fade" id="ModalNew" tabindex="-1" role="dialog" aria-labelledby="ModalNewTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ModalNewTitle">News</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" style="margin: 0 auto; width:100%; height:400px;">
+                <object type="text/html" name="urlst" id="urlst" data="#"
+                        style="width:100%; height:100%; margin:1%;"></object>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

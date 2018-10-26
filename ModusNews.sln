@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2047
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModusWeb", "ModusWeb\ModusWeb.csproj", "{512B8917-D1F2-41B2-A120-FE0B377086DA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{512B8917-D1F2-41B2-A120-FE0B377086DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{512B8917-D1F2-41B2-A120-FE0B377086DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{512B8917-D1F2-41B2-A120-FE0B377086DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{512B8917-D1F2-41B2-A120-FE0B377086DA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {ECB438FF-3242-4597-9764-EB577C2A8452}
+	EndGlobalSection
+EndGlobal
